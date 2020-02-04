@@ -17,15 +17,15 @@
 
 <body>
     <div id="app">
-       <div class="container">
+       <div class="container-fluid">
         <div class="row justify-content-center mt-5">
-            <div class="col col-md-10">
+            <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
                         Welcome Admin
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="col col-md-6">
                                 <div class="form-group">
                                     <label>Username</label>
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="col col-md-6">
                                  <div class="form-group">
                                     <label>Password</label>
@@ -48,6 +48,7 @@
                         </div>
                     </div>
                 </div>
+                <p id="status"></p>
             </div>
         </div>
        </div>
@@ -56,9 +57,35 @@
     <script src="js/vue.js"></script>
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
+    <script>
+        $(document).ready(function(){
+            $('#submit').click(function(){
+                let username = $('#username').val();
+                let password = $('#password').val();
 
+                let dataString = "username="+username+"&password="+password+"&login=";
+                $.ajax({
+                    url:'http://localhost/acain-gaming/mobile/staff_login.php',
+                    method:'post',crossDomain: true, cache: false,
+                    data:dataString,
+                    success:function(data){
+                       if(data === "login" ){
+                        $('#status').text(data);
+                        localStorage.loginstatus = "true";
+                        window.location.href = "dashboard.html";
+
+                       }
+                       else if(data === "login failed"){
+                        $('#status').text(data);
+                       }
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+            })
+
+            })
+        })
     </script>
 </body>
 
