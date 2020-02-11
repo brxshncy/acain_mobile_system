@@ -41,6 +41,18 @@
                                 </div>
                             </div>
                         </div>
+                           <div class="row justify-content-center">
+                            <div class="col col-md-6">
+                                 <div class="form-group">
+                                    <label>Log-in as:</label>
+                                    <select id="role" class="form-control">
+                                        <option value="Appraiser">Appraiser</option>
+                                        <option value="Examiner">Examiner</option>
+                                        <option value="Tax Mapper">Tax Mapper</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row justify-content-center">
                             <div class="col col-md-6">
                                 <button type="submit" class="btn btn-success btn-block" id="submit">Log-in</button>
@@ -62,22 +74,18 @@
             $('#submit').click(function(){
                 let username = $('#username').val();
                 let password = $('#password').val();
+                let role = $('#role').val()
 
-                let dataString = "username="+username+"&password="+password+"&login=";
+                let dataString = "username="+username+"&password="+password+"&role="+role+"&login=";
                 $.ajax({
                     url:'http://localhost/acain-gaming/mobile/staff_login.php',
                     method:'post',crossDomain: true, cache: false,
                     data:dataString,
+                    dataType:'JSON',
                     success:function(data){
-                       if(data === "login" ){
-                        $('#status').text(data);
-                        localStorage.loginstatus = "true";
-                        window.location.href = "dashboard.html";
-
-                       }
-                       else if(data === "login failed"){
-                        $('#status').text(data);
-                       }
+                        if(data.role == 'Appraiser'){
+                            window.location.href = "dashboard.html?id="+data.id;
+                        }
                     },
                     error:function(err){
                         console.log(err);

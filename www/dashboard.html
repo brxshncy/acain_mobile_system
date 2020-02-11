@@ -15,35 +15,19 @@
     <title>Hello World</title>
 </head>
 
-<body>
+<body>  
     <div id="app">
        <div class="container-fluid">
         <div class="row justify-content-center mt-5">
             <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
-                        Dashboard
+                        Unsurveyed Properties
                     </div>
                     <div class="card-body">
-                        <div class="row justify-content-center">
-                            <div class="col col-md-6">
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" class="form-control" id="username">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col col-md-6">
-                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" id="password">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col col-md-6">
-                                <button type="submit" class="btn btn-success btn-block" id="submit">Log-in</button>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Property ID: <span id="prop_id"></span> </h5>
                             </div>
                         </div>
                     </div>
@@ -59,32 +43,29 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script>
         $(document).ready(function(){
-            $('#submit').click(function(){
-                let username = $('#username').val();
-                let password = $('#password').val();
+            let url = window.location.search;
+            let id = url.substr(4);
 
-                let dataString = "username="+username+"&password="+password+"&login=";
+           
+            
+            if(id !== 0 || id!==''){
+                let dataString = "id="+id+"&showdata";
                 $.ajax({
-                    url:'http://localhost/acain-gaming/mobile/staff_login.php',
-                    method:'post',crossDomain: true, cache: false,
+                    url:'http://localhost/acain-gaming/mobile/unsurveyed_data.php',
+                    method:'POST',
                     data:dataString,
                     success:function(data){
-                       if(data === "login" ){
-                        $('#status').text(data);
-                        localStorage.loginstatus = "true";
-                        window.location.href = "dashboard.html";
-
-                       }
-                       else if(data === "login failed"){
-                        $('#status').text(data);
-                       }
+                        console.log(data);
                     },
                     error:function(err){
                         console.log(err);
                     }
-            })
+                })
+            }
+            
+        
+            
 
-            })
         })
     </script>
 </body>
