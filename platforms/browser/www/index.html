@@ -22,9 +22,9 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
-                        Welcome Admin
+                       Log-in
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-5">
                         <div class="row justify-content-center">
                             <div class="col col-md-6">
                                 <div class="form-group">
@@ -41,21 +41,20 @@
                                 </div>
                             </div>
                         </div>
-                           <div class="row justify-content-center">
-                            <div class="col col-md-6">
-                                 <div class="form-group">
-                                    <label>Log-in as:</label>
-                                    <select id="role" class="form-control">
-                                        <option value="Appraiser">Appraiser</option>
-                                        <option value="Examiner">Examiner</option>
-                                        <option value="Tax Mapper">Tax Mapper</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row justify-content-center">
                             <div class="col col-md-6">
-                                <button type="submit" class="btn btn-success btn-block" id="submit">Log-in</button>
+                                <label>Log-in as</label>
+                                <select name="role" class="form-control" id="role">
+                                    <option value=""></option>
+                                    <option value="Appraiser">Appraiser</option>
+                                    <option value="Tax Mapper">Tax Mapper</option>
+                                    <option value="Examiner">Examiner</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                            <div class="col col-md-6">
+                                <button type="submit" class="btn btn-success btn-block p-2" id="submit">Log-in</button>
                             </div>
                         </div>
                     </div>
@@ -74,26 +73,34 @@
             $('#submit').click(function(){
                 let username = $('#username').val();
                 let password = $('#password').val();
-                let role = $('#role').val()
+                let role = $('#role').val();
 
-                let dataString = "username="+username+"&password="+password+"&role="+role+"&login=";
-                $.ajax({
-                    url:'http://localhost/acain-gaming/mobile/staff_login.php',
-                    method:'post',crossDomain: true, cache: false,
-                    data:dataString,
-                    dataType:'JSON',
-                    success:function(data){
-                        if(data.role == 'Appraiser'){
-                            window.location.href = "dashboard.html?id="+data.id;
-                        }
-                    },
-                    error:function(err){
-                        console.log(err);
+                if(role !=='' || typeof(role) == 'undefined'){
+                    let dataString = "username="+username+"&password="+password+"&role="+role+"&login=";
+                        $.ajax({
+                            url:'http://localhost/acain-gaming-master/mobile/staff_login.php',
+                            method:'post',crossDomain: true, cache: false,
+                            data:dataString,
+                            dataType:'JSON',
+                            success:function(data){
+                                console.log(data);
+                              if(data.role == 'Appraiser'){
+                                 window.location.href="dashboard.html?id="+data.id
+                              }
+                              else{
+                                console.log(data.role);
+                              }
+                            },
+                            error:function(err){
+                                console.log(err);
                     }
-            })
 
-            })
+                })
+            }
+               
         })
+
+    })
     </script>
 </body>
 

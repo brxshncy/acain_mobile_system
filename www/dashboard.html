@@ -19,20 +19,9 @@
     <div id="app">
        <div class="container-fluid">
         <div class="row justify-content-center mt-5">
-            <div class="col">
+            <div class="col list-property">
                 <div class="card">
-                    <div class="card-header text-center">
-                        Unsurveyed Properties
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5>Property ID: <span id="prop_id"></span> </h5>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <p id="status"></p>
             </div>
         </div>
        </div>
@@ -46,16 +35,34 @@
             let url = window.location.search;
             let id = url.substr(4);
 
-           
             
             if(id !== 0 || id!==''){
                 let dataString = "id="+id+"&showdata";
                 $.ajax({
-                    url:'http://localhost/acain-gaming/mobile/unsurveyed_data.php',
+                    url:'http://localhost/acain-gaming-master/mobile/unsurveyed_data.php',
                     method:'POST',
                     data:dataString,
+                    dataType:'JSON',
                     success:function(data){
-                        console.log(data);
+                      console.log(data);
+                        for(var i in data){
+                            let html = "<div class='card mt-3'>";
+                                html +="<h5 class='card-header'>Property ID:"+data[i].prop_id+"</h5>";
+                                html +="<div class='card-body'>";
+                                    html +="<b class='mr-2'>Property Address:</b>"+data[i].p_address+"<br>";
+                                    html +="<b class='mr-2'>Kind of Property:</b>"+data[i].kind_prop+"<br>";
+                                    html +="<b class='mr-2'>Actual Use:</b>"+data[i].actual_use+"<br>";
+                                    html +="<b class='mr-2'>North:</b>"+data[i].north+"<br>";
+                                    html +="<b class='mr-2'>East:</b>"+data[i].south+"<br>";
+                                    html +="<b class='mr-2'>West:</b>"+data[i].west+"<br>";
+                                    html +="<b class='mr-2'>South:</b>"+data[i].east+"<br>";
+                                    html +="<b class='mr-2'>Property Measurement:</b>"+data[i].measurement+"sqm<br>";
+                                    html +="<b class='mr-2'>Property Value:</b>"+data[i].value+"<br>";
+                                html += "</div>";
+                                html += "</div>";
+                          
+                            $('.list-property').append(html);
+                        }
                     },
                     error:function(err){
                         console.log(err);
