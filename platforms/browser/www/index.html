@@ -11,20 +11,21 @@
     
     <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <title>Hello World</title>
+    <title>Sign in to application</title>
 </head>
-
-<body>
+<body class="" style="">
     <div id="app">
        <div class="container-fluid">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-3">
+           
+        </div>
+        <div class="row justify-content-center mt-2">
             <div class="col">
                 <div class="card">
-                    <div class="card-header text-center">
-                       Log-in
+                    <div class="card-header text-center bg-success">
+                       <b>Login</b> 
                     </div>
-                    <div class="card-body p-5">
+                    <div class="card-body p-5 bg-light">
                         <div class="row justify-content-center">
                             <div class="col col-md-6">
                                 <div class="form-group">
@@ -53,10 +54,20 @@
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
+                            <div class="col">
+                                <div id="alert" class="">
+                                  <span id="error_msg" class="text-danger text-center"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-3">
                             <div class="col col-md-6">
                                 <button type="submit" class="btn btn-success btn-block p-2" id="submit">Log-in</button>
                             </div>
                         </div>
+                    </div> 
+                    <div class="card-footer text-center bg-success">
+                       © Iligan City Assesor's Office
                     </div>
                 </div>
                 <p id="status"></p>
@@ -65,34 +76,44 @@
        </div>
     </div>
 
-    <script src="js/vue.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#submit').click(function(){
-                let username = $('#username').val();
-                let password = $('#password').val();
-                let role = $('#role').val();
+<script src="js/vue.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#submit').click(function(){
+            let username = $('#username').val();
+            let password = $('#password').val();
+            let role = $('#role').val();
 
-                if(role !=='' || typeof(role) == 'undefined'){
-                    let dataString = "username="+username+"&password="+password+"&role="+role+"&login=";
-                        $.ajax({
-                            url:'http://localhost/acain-gaming-master/mobile/staff_login.php',
-                            method:'post',crossDomain: true, cache: false,
-                            data:dataString,
-                            dataType:'JSON',
-                            success:function(data){
+            if(role !=='' || typeof(role) == 'undefined'){
+            let dataString = "username="+username+"&password="+password+"&role="+role+"&login=";
+                $.ajax({
+                    url:'http://localhost/acain-gaming/mobile/staff_login.php',
+                    method:'post',crossDomain: true, cache: false,
+                    data:dataString,
+                    dataType:'JSON',
+                    success:function(data){
+                        console.log(data);
+                        if(data != "invalid"){
+                            if(data.role == 'Appraiser'){
+                                window.location.href="dashboard.html?id="+data.id
+                            }
+                            else if(data.role =='Examiner'){
                                 console.log(data);
-                              if(data.role == 'Appraiser'){
-                                 window.location.href="dashboard.html?id="+data.id
-                              }
-                              else{
-                                console.log(data.role);
-                              }
-                            },
-                            error:function(err){
-                                console.log(err);
+                            }
+                            else if(data.role == 'Tax Mapper'){
+                                console.log(data);
+                            }
+                            }
+                            else{
+                                $('#alert').addClass("alert alert-danger");
+                                $('#error_msg').text("Invalid Username and Password");
+                            }
+                             
+                    },
+                    error:function(err){
+                        console.log(err);
                     }
 
                 })
