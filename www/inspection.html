@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  
+    
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>Property Info</title>
+</head>
+
+<body>  
+
+<div class="container">
+    
+    <div class="row justify-content-center mt-5">
+        <div class="col list-property">
+            <form id="inspection_form" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header text-center"><h3>Property Details</h3></div>
+                <div class="card-body">
+                <div class="row mt-2">
+                    <div class="col">
+                        <div class="form-group">
+                           
+                            <input type="text" class="form-control text-center" id="name" style="border:0px; border-bottom:2px solid; background-color:#fff;" readonly="">
+                            <p class="text-center">Owner Name</p>
+                        </div>
+                    </div>
+                </div>
+                  <div class="row mt-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control text-center" id="address" style="border:0px; border-bottom:2px solid; background-color:#fff;" readonly="">
+                            <p class="text-center">(Barangay/Street Name/City)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control text-center" id="n" style="border:0px; border-bottom:2px solid; background-color:#fff;" readonly="">
+                            <p class="text-center">Kind of Property</p>
+
+                        </div>
+                    </div>
+                 </div>
+                    <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control text-center" id="s" style="border:0px; border-bottom:2px solid; background-color:#fff;" readonly="">
+                             <p class="text-center">Actual Use</p>
+                        </div>
+                    </div>
+                 </div>
+                    <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control text-center" id="e" style="border:0px; border-bottom:2px solid; background-color:#fff;" readonly="">
+                             <p class="text-center">Kinotal Property Value</p>
+                        </div>
+                    </div>
+                 </div>
+                <hr>
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Building Permit No.</label>
+                            <input type="text" class="form-control" name="building_permit" id="building_permit" >
+                            <input type="hidden" class="form-control" name="prop_idd" id="prop_idd" >
+                            <input type="hidden" class="form-control" name="staff_id" id="staff_id" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Date Issued</label>
+                            <input type="date" class="form-control" name="date_issued" id="date_issued" >
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Date Constructed/Completed</label>
+                            <input type="date" class="form-control" name="date_constructed" id="date_constructed" >
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Date Occupied</label>
+                            <input type="date" class="form-control" name="date_occupied" id="date_occupied" >
+                        </div>
+                    </div>
+                </div>
+                <div class= "row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Building Age</label>
+                            <input type="date" class="form-control" name="building_age" id="building_age" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col col-md-8">
+                        <div class="form-group">
+                            <label>No. of Storeys</label>
+                            <input type="number" class="form-control" name="no_storeys" id="no_storeys" >
+                        </div>
+                    </div>
+                </div>
+                    <div class= "row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Area of 1st Floor</label>
+                            <input type="number" class="form-control" name="first" id="first" >
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Area of 2nd Floor</label>
+                            <input type="number" class="form-control" name="sec" id="sec" >
+                        </div>
+                    </div>
+                </div>
+                <div class= "row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Area of 3rd Floor</label>
+                            <input type="number" class="form-control" name="third" id="third" >
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Area of 4th Floor</label>
+                            <input type="number" class="form-control" name="fourth" id="fourth" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 justify-content-center">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Total Floor Area</label>
+                            <input type="number" class="form-control" name="total_area" id="total_area" >
+                        </div>
+                    </div>
+                </div>
+                 <div class="row mt-2 justify-content-center">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Total Propety Value</label>
+                            <input type="number" class="form-control" name="total_value" id="total_value" >
+                        </div>
+                    </div>
+                </div>
+                 <div class="row mt-2 justify-content-center">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label>Remarks</label>
+                            <select name="remarks" class="form-control">
+                                <option value=""></option>
+                                <option value="Approved">Approved</option>
+                                 <option value="Not Approved">Not Approved</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Upload Floor Sketch Plan</label>
+                            <input type="file" name="floor_plan" id="floor_plan">
+                    </div>
+                </div>
+               </div>
+                   <div class="row justify-content-center mt-3">
+                    <div class="col col-md-6">
+                       <button type="submit" id="bdry_btn" class="btn btn-success btn-block">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="loading" style="display:none;">
+    <div class="loader"></div>
+</div>
+<style>
+    .loading {
+    position: fixed;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    background: #fff;
+}
+.loader {
+    left: 50%;
+    margin-left: -4em;
+    font-size: 10px;
+    border: .8em solid rgba(218, 219, 223, 1);
+    border-left: .8em solid rgba(58, 166, 165, 1);
+    animation: spin 1.1s infinite linear;
+}
+.loader, .loader:after {
+    border-radius: 50%;
+    width: 8em;
+    height: 8em;
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -4.05em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+    </style>
+<script src="js/vue.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script>
+$(document).ready(function(){
+    
+    let url = window.location.search;
+    let qry = new URLSearchParams(url);
+    let prop_id = qry.get("prop");
+    let staff_id = qry.get("s_id");
+    $('#prop_idd').val(prop_id);
+    $('#staff_id').val(staff_id);
+    $.ajax({
+        url:'http://localhost/acain-gaming/mobile/boundaries.php',
+        type:'POST',
+        data:{prop_id:prop_id},
+        dataType:'JSON',
+        beforeSend:function(){
+            /*alert('Loading Data');*/
+            $('.display').show();
+        },
+        success:function(data){
+            console.log(data);
+            $('#name').val(data.name);
+            $('#address').val(data.address);
+            $('#n').val(data.kind_prop);
+            $('#s').val(data.actual_use);
+            $('#e').val(data.prop_value);
+        },
+        error:function(err){
+            console.log(err);
+        }
+    })
+
+    $('#inspection_form').on('submit',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:'http://localhost/acain-gaming/mobile/property_inspection.php',
+            data:new FormData(this),
+            contentType:false,
+            cache:false,
+            dataType:'JSON', 
+            processData:false,
+            beforeSend:function(){
+                  $('.loading').show();
+            },
+            success:function(data){
+                $('.loading').hide();
+                console.log(data);
+                /*if(data.status = 1){
+                    alert('Details submitted successfully!');
+                    window.location.href="tm_dashboard.html?id="+staff_id;
+                }*/
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+
+})
+</script>
+</body>
+</html>
