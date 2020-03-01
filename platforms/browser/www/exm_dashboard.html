@@ -18,7 +18,7 @@
 <body>  
     <div id="app">
        <div class="container-fluid">
-        <div class="row mt-2">
+            <div class="row mt-2">
         <div class="col text-right">
             <button type="button" class="btn btn-danger logout">Log Out</button>
         </div>
@@ -44,7 +44,7 @@
             if(id !== 0 || id!==''){
                 let dataString = "id="+id+"&showdata";
                 $.ajax({
-                    url:'http://localhost/acain-gaming/mobile/apr_data.php',
+                    url:'http://localhost/acain-gaming/mobile/exmnr_data.php',
                     method:'POST',
                     data:dataString,
                     dataType:'JSON',
@@ -65,8 +65,8 @@
                                     html +="<b class='mr-2'>Property Value:</b>"+data[i].value+"<br>";
                                     html +="<div class='row'>";
                                     html +="<div class='col'>";
-                                    html +="<a href='inspection.html?prop="+data[i].p_id+"&team="+data[i].team_id+"&s_id="+data[i].s_id+"'>";
-                                    html +="<button type='button' class='btn btn-warning mt-3'>Input Inspection Details</button>";
+                                    html +="<a href='prop_title.html?prop="+data[i].p_id+"&team="+data[i].team_id+"&s_id="+data[i].s_id+"'>";
+                                    html +="<button type='button' class='btn btn-warning mt-3'>Input Ownership Title</button>";
                                     html +="</a>";
                                     html +="</div>";
                                     html +="</div>";
@@ -81,6 +81,7 @@
                     }
                 })
             }
+
                         $(document).on("click",'.logout',function(){
                 let log_out = "logout";
                 $.ajax({

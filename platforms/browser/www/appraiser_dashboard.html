@@ -12,12 +12,17 @@
     <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>Hello World</title>
+    <title>Property Details</title>
 </head>
 
 <body>  
     <div id="app">
        <div class="container-fluid">
+        <div class="row mt-2">
+        <div class="col text-right">
+            <button type="button" class="btn btn-danger logout">Log Out</button>
+        </div>
+    </div>
         <div class="row justify-content-center mt-5">
             <div class="col list-property">
                 <div class="card">
@@ -76,6 +81,24 @@
                     }
                 })
             }
+                        $(document).on("click",'.logout',function(){
+                let log_out = "logout";
+                $.ajax({
+                    url:'http://localhost/acain-gaming/mobile/staff_login.php',
+                    method:"POST",
+                    data:log_out,
+                    success:function(data){
+                      
+                        if(data == '"logout"'){
+                            window.location.href="index.html";
+                        }
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                })
+            })
+            
             
         
             
