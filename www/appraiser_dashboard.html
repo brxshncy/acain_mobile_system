@@ -44,7 +44,7 @@
             if(id !== 0 || id!==''){
                 let dataString = "id="+id+"&showdata";
                 $.ajax({
-                    url:'http://localhost/acain-gaming/mobile/apr_data.php',
+                    url:'http://infinitemotorsiligan.com/mobile/apr_data.php',
                     method:'POST',
                     data:dataString,
                     dataType:'JSON',
@@ -84,7 +84,7 @@
                         $(document).on("click",'.logout',function(){
                 let log_out = "logout";
                 $.ajax({
-                    url:'http://localhost/acain-gaming/mobile/staff_login.php',
+                    url:'http://infinitemotorsiligan.com/mobile/staff_login.php',
                     method:"POST",
                     data:log_out,
                     success:function(data){

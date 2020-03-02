@@ -244,7 +244,7 @@ $(document).ready(function(){
     $('#prop_idd').val(prop_id);
     $('#staff_id').val(staff_id);
     $.ajax({
-        url:'http://localhost/acain-gaming/mobile/boundaries.php',
+        url:'http://infinitemotorsiligan.com/mobile/boundaries.php',
         type:'POST',
         data:{prop_id:prop_id},
         dataType:'JSON',
@@ -269,7 +269,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type:'POST',
-            url:'http://localhost/acain-gaming/mobile/property_inspection.php',
+            url:'http://infinitemotorsiligan.com/mobile/property_inspection.php',
             data:new FormData(this),
             contentType:false,
             cache:false,
