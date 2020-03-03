@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  
+    
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>Property Details</title>
+</head>
+
+<body>  
+    <div id="app">
+       <div class="container-fluid">
+            <div class="row mt-2">
+        <div class="col text-right">
+            <button type="button" class="btn btn-danger logout">Log Out</button>
+        </div>
+    </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col list-property">
+                <div class="card">
+                </div>
+            </div>
+        </div>
+       </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+        $(document).ready(function(){
+            let url = window.location.search;
+            let id = url.substr(4);
+
+            
+            if(id !== 0 || id!==''){
+                let dataString = "id="+id+"&showdata";
+                $.ajax({
+                    url:'http://infinitemotorsiligan.com/mobile/exmnr_data.php',
+                    method:'POST',
+                    data:dataString,
+                    dataType:'JSON',
+                    success:function(data){
+                      console.log(data);
+                        for(var i in data){
+                            let html = "<div class='card mt-3 mb-3'>";
+                                html +="<h5 class='card-header bg-info'>Property ID:"+data[i].prop_id+"</h5>";
+                                html +="<div class='card-body'>";
+                                    html +="<b class='mr-2'>Property Address:</b>"+data[i].p_address+"<br>";
+                                    html +="<b class='mr-2'>Kind of Property:</b>"+data[i].kind_prop+"<br>";
+                                    html +="<b class='mr-2'>Actual Use:</b>"+data[i].actual_use+"<br>";
+                                    html +="<b class='mr-2'>North:</b>"+data[i].north+"<br>";
+                                    html +="<b class='mr-2'>East:</b>"+data[i].south+"<br>";
+                                    html +="<b class='mr-2'>West:</b>"+data[i].west+"<br>";
+                                    html +="<b class='mr-2'>South:</b>"+data[i].east+"<br>";
+                                    html +="<b class='mr-2'>Property Measurement:</b>"+data[i].measurement+"sqm<br>";
+                                    html +="<b class='mr-2'>Property Value:</b>"+data[i].value+"<br>";
+                                    html +="<div class='row'>";
+                                    html +="<div class='col'>";
+                                    html +="<a href='prop_title.html?prop="+data[i].p_id+"&team="+data[i].team_id+"&s_id="+data[i].s_id+"'>";
+                                    html +="<button type='button' class='btn btn-warning mt-3'>Input Ownership Title</button>";
+                                    html +="</a>";
+                                    html +="</div>";
+                                    html +="</div>";
+                                html += "</div>";
+                                html += "</div>";
+                          
+                            $('.list-property').append(html);
+                        }
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                })
+            }
+
+                        $(document).on("click",'.logout',function(){
+                let log_out = "logout";
+                $.ajax({
+                    url:'http://infinitemotorsiligan.com/mobile/staff_login.php',
+                    method:"POST",
+                    data:log_out,
+                    success:function(data){
+                      
+                        if(data == '"logout"'){
+                            window.location.href="index.html";
+                        }
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                })
+            })
+            
+            
+        
+            
+
+        })
+    </script>
+</body>
+
+</html>

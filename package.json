@@ -24,10 +24,13 @@
       "cordova-plugin-globalization": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-network-information": {},
-      "cordova-plugin-vibration": {}
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-whitelist": {}
     }
   },
   "dependencies": {
-    "cordova-browser": "^6.0.0"
+    "cordova-android": "8.1.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-whitelist": "1.3.4"
   }
 }
